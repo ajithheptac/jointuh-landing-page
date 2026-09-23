@@ -2,17 +2,11 @@
   "version": 3,
   "routes": [
     {
-      "src": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$",
+      "src": "^(?:\\/((?:[^\\/]+?)(?:\\/(?:[^\\/]+?))*))\\/$",
       "headers": {
         "Location": "/$1"
       },
       "status": 308,
-      "continue": true
-    },
-    {
-      "src": "/_next/__private/trace",
-      "dest": "/404",
-      "status": 404,
       "continue": true
     },
     {
@@ -27,114 +21,16 @@
       ]
     },
     {
-      "src": "/500",
+      "src": "/500/?",
       "status": 500,
       "continue": true
-    },
-    {
-      "src": "/(?<path>.+?)(?:/)?$",
-      "dest": "/$path.segments/$segmentPath.segment.rsc",
-      "has": [
-        {
-          "type": "header",
-          "key": "rsc",
-          "value": "1"
-        },
-        {
-          "type": "header",
-          "key": "next-router-prefetch",
-          "value": "1"
-        },
-        {
-          "type": "header",
-          "key": "next-router-segment-prefetch",
-          "value": "/(?<segmentPath>.+)"
-        }
-      ],
-      "continue": true,
-      "override": true
-    },
-    {
-      "src": "^/?$",
-      "dest": "/index.segments/$segmentPath.segment.rsc",
-      "has": [
-        {
-          "type": "header",
-          "key": "rsc",
-          "value": "1"
-        },
-        {
-          "type": "header",
-          "key": "next-router-prefetch",
-          "value": "1"
-        },
-        {
-          "type": "header",
-          "key": "next-router-segment-prefetch",
-          "value": "/(?<segmentPath>.+)"
-        }
-      ],
-      "continue": true,
-      "override": true
-    },
-    {
-      "src": "^/?",
-      "has": [
-        {
-          "type": "header",
-          "key": "rsc",
-          "value": "1"
-        }
-      ],
-      "dest": "/index.rsc",
-      "headers": {
-        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
-      },
-      "continue": true,
-      "override": true
-    },
-    {
-      "src": "^/((?!.+\\.rsc).+?)(?:/)?$",
-      "has": [
-        {
-          "type": "header",
-          "key": "rsc",
-          "value": "1"
-        }
-      ],
-      "dest": "/$1.rsc",
-      "headers": {
-        "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
-      },
-      "continue": true,
-      "override": true
     },
     {
       "handle": "filesystem"
     },
     {
-      "src": "/index(\\.action|\\.rsc)",
-      "dest": "/",
-      "continue": true
-    },
-    {
-      "src": "/\\.prefetch\\.rsc$",
-      "dest": "/__index.prefetch.rsc",
-      "check": true
-    },
-    {
-      "src": "/(.+)/\\.prefetch\\.rsc$",
-      "dest": "/$1.prefetch.rsc",
-      "check": true
-    },
-    {
-      "src": "/\\.rsc$",
-      "dest": "/index.rsc",
-      "check": true
-    },
-    {
-      "src": "/(.+)/\\.rsc$",
-      "dest": "/$1.rsc",
+      "src": "/_next/data/(.*)",
+      "dest": "/_next/data/$1",
       "check": true
     },
     {
@@ -157,24 +53,10 @@
       }
     },
     {
-      "src": "^/(?<path>.+)(?<rscSuffix>\\.segments/.+\\.segment\\.rsc)(?:/)?$",
-      "dest": "/$path.rsc",
-      "check": true
-    },
-    {
-      "handle": "rewrite"
-    },
-    {
-      "src": "^/(?<path>.+)(?<rscSuffix>\\.segments/.+\\.segment\\.rsc)(?:/)?$",
-      "dest": "/$path.rsc",
-      "check": true,
-      "override": true
-    },
-    {
       "handle": "hit"
     },
     {
-      "src": "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media|mUrzO33ZB2hkoN4RQpySI)/.+",
+      "src": "/_next/static/(?:[^/]+/pages|pages|chunks|immutable|runtime|css|image|media|lhhRM7UOMdL_9IzONS82g)/.+",
       "headers": {
         "cache-control": "public,max-age=31536000,immutable"
       },
@@ -182,7 +64,7 @@
       "important": true
     },
     {
-      "src": "/index(?:/)?",
+      "src": "/(?:index)?(?:/)?$",
       "headers": {
         "x-matched-path": "/"
       },
@@ -190,7 +72,7 @@
       "important": true
     },
     {
-      "src": "/((?!index$).*?)(?:/)?",
+      "src": "/((?!index$).*?)(?:/)?$",
       "headers": {
         "x-matched-path": "/$1"
       },
@@ -202,24 +84,31 @@
     },
     {
       "src": "/.*",
-      "dest": "/404",
-      "status": 404,
-      "headers": {
-        "x-next-error-status": "404"
-      }
+      "dest": "/_not-found",
+      "status": 404
     },
     {
       "src": "/.*",
-      "dest": "/500",
-      "status": 500,
-      "headers": {
-        "x-next-error-status": "500"
-      }
+      "dest": "/_error",
+      "status": 500
     }
   ],
   "images": {
-    "domains": [],
+    "localPatterns": [
+      {
+        "pathname": "^(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)\\/?)$",
+        "search": ""
+      }
+    ],
+    "remotePatterns": [],
     "sizes": [
+      32,
+      48,
+      64,
+      96,
+      128,
+      256,
+      384,
       640,
       750,
       828,
@@ -227,24 +116,11 @@
       1200,
       1920,
       2048,
-      3840,
-      32,
-      48,
-      64,
-      96,
-      128,
-      256,
-      384
+      3840
     ],
+    "domains": [],
     "qualities": [
       75
-    ],
-    "remotePatterns": [],
-    "localPatterns": [
-      {
-        "pathname": "^(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)\\/?)$",
-        "search": ""
-      }
     ],
     "minimumCacheTTL": 14400,
     "formats": [
@@ -256,31 +132,24 @@
   },
   "overrides": {
     "404.html": {
-      "path": "404",
-      "contentType": "text/html; charset=utf-8"
+      "contentType": "text/html; charset=utf-8",
+      "path": "404"
     },
-    "500.html": {
-      "path": "500",
-      "contentType": "text/html; charset=utf-8"
+    "_not-found.html": {
+      "contentType": "text/html; charset=utf-8",
+      "path": "_not-found"
     },
-    "404.rsc.json": {
-      "path": "404.rsc",
-      "contentType": "application/json"
+    "index.html": {
+      "contentType": "text/html; charset=utf-8",
+      "path": "index"
     },
-    "404.segments/_tree.segment.rsc.json": {
-      "path": "404.segments/_tree.segment.rsc",
-      "contentType": "application/json"
+    "privacy-portal.html": {
+      "contentType": "text/html; charset=utf-8",
+      "path": "privacy-portal"
     },
-    "500.rsc.json": {
-      "path": "500.rsc",
-      "contentType": "application/json"
-    },
-    "500.segments/_tree.segment.rsc.json": {
-      "path": "500.segments/_tree.segment.rsc",
-      "contentType": "application/json"
-    },
-    "_next/static/not-found.txt": {
-      "contentType": "text/plain"
+    "terms.html": {
+      "contentType": "text/html; charset=utf-8",
+      "path": "terms"
     }
   },
   "framework": {

@@ -172,7 +172,8 @@
       "name": "@babel/core",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "dev",
+        "peer"
       ],
       "resolved": "7.29.7",
       "source": "registry",
@@ -232,7 +233,7 @@
       "name": "@babel/helper-string-parser",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "prod"
       ],
       "resolved": "7.29.7",
       "source": "registry",
@@ -242,7 +243,7 @@
       "name": "@babel/helper-validator-identifier",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "prod"
       ],
       "resolved": "7.29.7",
       "source": "registry",
@@ -302,30 +303,9 @@
       "name": "@babel/types",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "prod"
       ],
       "resolved": "7.29.8",
-      "source": "registry",
-      "sourceUrl": "https://registry.npmjs.org"
-    },
-    {
-      "name": "@emnapi/core",
-      "type": "transitive",
-      "scopes": [
-        "dev",
-        "optional"
-      ],
-      "resolved": "1.10.0",
-      "source": "registry",
-      "sourceUrl": "https://registry.npmjs.org"
-    },
-    {
-      "name": "@emnapi/runtime",
-      "type": "transitive",
-      "scopes": [
-        "optional"
-      ],
-      "resolved": "1.11.3",
       "source": "registry",
       "sourceUrl": "https://registry.npmjs.org"
     },
@@ -336,7 +316,7 @@
         "dev",
         "optional"
       ],
-      "resolved": "1.2.1",
+      "resolved": "1.2.3",
       "source": "registry",
       "sourceUrl": "https://registry.npmjs.org"
     },
@@ -484,7 +464,7 @@
       "name": "@firebase/app",
       "type": "transitive",
       "scopes": [
-        "prod"
+        "peer"
       ],
       "resolved": "0.16.1",
       "source": "registry",
@@ -534,7 +514,7 @@
       "name": "@firebase/app-compat",
       "type": "transitive",
       "scopes": [
-        "prod"
+        "peer"
       ],
       "resolved": "0.5.17",
       "source": "registry",
@@ -544,7 +524,7 @@
       "name": "@firebase/app-types",
       "type": "transitive",
       "scopes": [
-        "prod"
+        "peer"
       ],
       "resolved": "0.9.6",
       "source": "registry",
@@ -864,7 +844,7 @@
       "name": "@firebase/util",
       "type": "transitive",
       "scopes": [
-        "prod"
+        "peer"
       ],
       "resolved": "1.15.3",
       "source": "registry",
@@ -1748,7 +1728,8 @@
       "name": "@typescript-eslint/parser",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "dev",
+        "peer"
       ],
       "resolved": "8.67.0",
       "source": "registry",
@@ -2080,7 +2061,8 @@
       "name": "acorn",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "dev",
+        "peer"
       ],
       "resolved": "8.18.0",
       "source": "registry",
@@ -2320,7 +2302,8 @@
       "name": "browserslist",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "dev",
+        "peer"
       ],
       "resolved": "4.28.8",
       "source": "registry",
@@ -2740,7 +2723,8 @@
       "name": "eslint-plugin-import",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "dev",
+        "peer"
       ],
       "resolved": "2.32.0",
       "source": "registry",
@@ -4818,6 +4802,17 @@
       "sourceUrl": "https://registry.npmjs.org"
     },
     {
+      "name": "typescript",
+      "type": "transitive",
+      "scopes": [
+        "dev",
+        "peer"
+      ],
+      "resolved": "6.0.3",
+      "source": "registry",
+      "sourceUrl": "https://registry.npmjs.org"
+    },
+    {
       "name": "typescript-eslint",
       "type": "transitive",
       "scopes": [
@@ -5031,7 +5026,8 @@
       "name": "zod",
       "type": "transitive",
       "scopes": [
-        "dev"
+        "dev",
+        "peer"
       ],
       "resolved": "4.4.3",
       "source": "registry",
