@@ -315,7 +315,7 @@
         "dev",
         "optional"
       ],
-      "resolved": "1.10.0",
+      "resolved": "1.11.3",
       "source": "registry",
       "sourceUrl": "https://registry.npmjs.org"
     },
@@ -336,7 +336,7 @@
         "dev",
         "optional"
       ],
-      "resolved": "1.2.1",
+      "resolved": "1.2.3",
       "source": "registry",
       "sourceUrl": "https://registry.npmjs.org"
     },
